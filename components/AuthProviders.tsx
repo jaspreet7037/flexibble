@@ -1,9 +1,9 @@
 "use client";
 
 import { getProviders, signIn } from 'next-auth/react';
-import { useState, useEffect } from 'react'
+import react, { useState, useEffect } from 'react'
 
-type Providers = {
+type Provider = {
   id: string,
   name: string,
   type: string,
@@ -12,13 +12,18 @@ type Providers = {
   signInUrlParams: Record<string, string> | null;
 }
 
+type Providers = Record<string, Provider>;
+
 const AuthProviders = () => {
-  const [Providers, setProviders] = useState<Providers | null>(null);
-  return (
-    <div>
-      AuthProviders
-    </div>
-  )
+  const [providers, setProviders] = useState<Providers | null>(null);
+  if(providers) {
+    return (
+      <div>
+        {Object.values(providers).map
+        ((provider: Provider))}
+      </div>
+    )
+  }
 }
 
 export default AuthProviders
