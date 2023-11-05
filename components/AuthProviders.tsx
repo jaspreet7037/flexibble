@@ -10,7 +10,7 @@ type Provider = {
   type: string,
   signinUrl: string,
   callbackUrl: string,
-  signInUrlParams: Record<string, string> | undefined;
+  signInUrlParams?: Record<string, string> | undefined;
 }
 
 type Providers = Record<string, Provider>;
@@ -22,7 +22,7 @@ const AuthProviders = () => {
     const fetchProviders = async () => {
       const res = await getProviders();
       console.log(res);
-      //setProviders(res);
+      setProviders(res);
     }
     fetchProviders();
   }, []);
